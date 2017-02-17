@@ -1,0 +1,6 @@
+---
+- hosts: devenvironment
+  become: yes
+  become_method: sudo
+  roles:
+     - jumpcloud
