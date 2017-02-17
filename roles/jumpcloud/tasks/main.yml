@@ -20,3 +20,7 @@
   shell: "curl --header 'x-connect-key: 485201915b44f3bde090f158c6967f6ce149ff5f' https://kickstart.jumpcloud.com/Kickstart | sudo bash"
   ignore_errors: yes
   when: "not jc_installed.stdout"
+
+- service:
+    name: jcagent
+    state: restarted
