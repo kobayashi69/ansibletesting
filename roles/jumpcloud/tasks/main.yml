@@ -24,3 +24,14 @@
 - service:
     name: jcagent
     state: restarted
+
+- name: Creates directory for register.sh script
+  file: path=/tmp/jcagent state=directory owner=root group=root mode=0700
+
+- copy: src=~/remotetest/roles/jumpcloud/templates/register.sh dest=/tmp/jcagent/register.sh owner=root group=root mode=0700
+
+- name: Register Agent with AWS-Dev-Environment Tag
+  shell: "bash /tmp/jcagent/register.sh"
+
+- file: path=/etc/jcagent state=absent
+- file: path=/etc/jcagent state=directory
